@@ -2,6 +2,3 @@ baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'Example Site'
 theme = 'nyong'
-
-[params]
-  recent_post = true
