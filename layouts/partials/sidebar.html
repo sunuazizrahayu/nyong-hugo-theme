@@ -1,0 +1,16 @@
+<div id="main-sidebar" class="col-lg-4 col-md-4 col-sm-5">
+	<div>
+		<h3>Latest Post</h3>
+		<ul>
+			{{- range first 5 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+			{{- $url := "" }}
+			{{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
+			{{- $url = .Permalink }}
+			{{- else }}
+			{{- $url = .RelPermalink }}
+			{{- end }}
+			<li><a href="{{ $url }}">{{ .Title }}</a></li>
+			{{- end }}
+		</ul>
+	</div>
+</div>

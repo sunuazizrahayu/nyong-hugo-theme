@@ -1,10 +1,13 @@
 {{ define "main" }}
-<div id="main-content" class="container">
-{{- $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-{{- range $pag.Pages }}
-  {{- partial "post_summary" . }}
-{{- end }}
+<div class="container grid">
+	<div id="main-content" class="col-lg-8 col-md-8 col-sm-7">
+		{{- $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+		{{- range $pag.Pages }}
+		{{- partial "post_summary" . }}
+		{{- end }}
 
-{{- partial "pagination" . }}
+		{{- partial "pagination" . }}
+	</div>
+	{{- partial "sidebar" . }}
 </div>
 {{ end }}
