@@ -1,6 +1,6 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://sunuazizrahayu.github.io/nyong-hugo-theme/'
 languageCode = 'en-us'
-title = 'Example Site'
+title = 'Nyong Hugo Theme'
 theme = 'nyong'
 
-paginate = 2
+paginate = 5
