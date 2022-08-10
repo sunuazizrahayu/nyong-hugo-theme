@@ -1,9 +1,9 @@
 {{ define "main" }}
 <div id="main-content" class="container">
-{{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-{{ range $pag.Pages }}
-  {{ partial "post_summary" . }}
-{{ end }}
+{{- $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+{{- range $pag.Pages }}
+  {{- partial "post_summary" . }}
+{{- end }}
 
 {{- partial "pagination" . }}
 </div>

@@ -1,5 +1,11 @@
+{{- $url := "" }}
+{{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
+{{- $url = .Permalink }}
+{{- else }}
+{{- $url = .RelPermalink }}
+{{- end }}
 <article>
-    <a href="{{ .Permalink }}">
+    <a href="{{ $url }}">
     <h2>{{ .Title }}</h2>
     </a>
 </article>
