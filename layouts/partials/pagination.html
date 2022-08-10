@@ -1,0 +1,15 @@
+{{- $urlPrev := "" -}}
+{{- $urlNext := "" -}}
+{{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
+	{{- if .Paginator.HasPrev }}{{ $urlPrev = (.Paginator.Prev.URL | absURL) }}{{ end }}
+	{{- if .Paginator.HasNext }}{{ $urlNext = (.Paginator.Next.URL | absURL) }}{{ end }}
+{{- else }}
+	{{- if .Paginator.HasPrev }}{{ $urlPrev = (.Paginator.Prev.URL | relURL) }}{{ end }}
+	{{- if .Paginator.HasNext }}{{ $urlNext = (.Paginator.Next.URL | relURL) }}{{ end }}
+{{- end }}
+
+<div class="pagination">
+{{ if .Paginator.HasPrev }}<a href="{{ $urlPrev }}">Previous</a>{{ end -}}
+<span>{{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+{{- if .Paginator.HasNext }}<a href="{{ $urlNext }}">Next</a>{{ end }}
+</div>

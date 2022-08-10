@@ -4,5 +4,7 @@
 {{ range $pag.Pages }}
   {{ partial "post_summary" . }}
 {{ end }}
+
+{{- partial "pagination" . }}
 </div>
 {{ end }}

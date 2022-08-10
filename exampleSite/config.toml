@@ -2,3 +2,5 @@ baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'Example Site'
 theme = 'nyong'
+
+paginate = 2
