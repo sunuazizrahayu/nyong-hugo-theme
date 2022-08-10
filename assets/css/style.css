@@ -1,0 +1,10 @@
+body {
+	word-break: break-word;
+}
+
+.site-title {
+	font-size: 48px;
+	font-weight: bold;
+	line-height: 1.rem;
+	text-align: center;
+}

@@ -7,8 +7,9 @@
 
 
     {{- $css_grid := resources.Get "css/reflex.css" }}
+    {{- $css_reset := resources.Get "css/reset.css" }}
     {{- $css_style := resources.Get "css/style.css" }}
-    {{- $stylesheet := (slice $css_grid $css_style) | resources.Concat "assets/css/stylesheet.css" }}
+    {{- $stylesheet := (slice $css_grid $css_reset $css_style) | resources.Concat "assets/css/stylesheet.css" }}
     {{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
     {{- $stylesheet := $stylesheet | resources.Minify | fingerprint }}
     {{- $stylesheetUrl := (.Site.BaseURL | replaceRE "/$" "") }}

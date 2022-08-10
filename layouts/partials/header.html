@@ -1,1 +1,9 @@
-<header></header>
+<header>
+	<div class="container">
+		{{- if not .IsPage }}
+		<h1 class="site-title">{{ .Site.Title }}</h1>
+		{{- else }}
+		<h2 class="site-title">{{ .Site.Title }}</h2>
+		{{- end }}
+	</div>
+</header>
