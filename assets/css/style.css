@@ -12,6 +12,9 @@ header {
 article {
 	margin-bottom: 30px;
 }
+a {
+	color: blue;
+}
 
 /* hugo default css */
 pre {
