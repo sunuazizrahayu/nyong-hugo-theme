@@ -3,7 +3,11 @@ languageCode = 'en-us'
 title = 'Nyong Hugo Theme'
 theme = 'nyong'
 
+# Show how many post of page
 paginate = 5
+
+# Generate a nice robots.txt for SEO
+enableRobotsTXT = true
 
 [params]
   description = 'Simple Fast, SEO Friendly Hugo Theme'
