@@ -47,9 +47,8 @@ pre {
 }
 
 .post-title {
-	padding-bottom: 5px;
-	font-size: 2.3rem;
-	line-height: 2.3rem;
+	font-size: 32px;
+	line-height: normal;
 }
 .post-title a {
 	color: #000;
@@ -71,26 +70,42 @@ pre {
 	line-height: 2rem;
 }
 .post-content h1 {
-	font-size: 2.3rem;
+	font-size: 32px;
 }
 .post-content h2 {
-	font-size: 2.1rem;
+	font-size: 29px;
 }
 .post-content h3 {
-	font-size: 1.9rem;
+	font-size: 27px;
 }
 .post-content h4 {
-	font-size: 1.7rem;
+	font-size: 24px;
 }
 .post-content h5 {
-	font-size: 1.5rem;
+	font-size: 21px;
 }
 .post-content h6 {
-	font-size: 1.3rem;
+	font-size: 18px;
 }
 .post-content p {
 	margin-bottom: 1rem;
 }
 .post-content pre {
 	font-size: 1rem;
+}
+
+
+/* summary post */
+.post-title.post-summary {
+	line-height: normal;
+	padding-bottom: inherit;
+}
+.post-content.post-summary {
+	color: #292929;
+	display: -webkit-box;
+	-moz-box-orient: vertical;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
