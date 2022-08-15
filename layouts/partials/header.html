@@ -1,9 +1,16 @@
+{{- $url := "/" | relURL }}
+{{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
+	{{- $url = "/" | absURL }}
+{{- end }}
 <header>
 	<div class="container">
 		{{- if not .IsPage }}
-		<h1 class="site-title">{{ .Site.Title }}</h1>
+		<h1 class="site-title"><a href="{{ $url }}">{{ .Site.Title }}</a></h1>
 		{{- else }}
-		<h2 class="site-title">{{ .Site.Title }}</h2>
+		<h2 class="site-title"><a href="{{ $url }}">{{ .Site.Title }}</a></h2>
+		{{- end }}
+		{{- if .Site.Params.Description }}
+		<h2 class="site-description">{{ .Site.Params.Description }}</h2>
 		{{- end }}
 	</div>
 </header>

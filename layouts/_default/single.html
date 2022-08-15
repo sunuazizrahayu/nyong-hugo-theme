@@ -1,9 +1,11 @@
 {{ define "main" }}
 <div class="container grid">
-	<div id="main-content" class="col-lg-8 col-md-8 col-sm-7">
-		<h1>{{ .Title }}</h1>
-		<div>{{ .Content }}</div>
-	</div>
+	<section id="main-content" class="col-lg-8 col-md-8 col-sm-7">
+		<article>
+			<h1 class="post-title">{{ .Title }}</h1>
+			<div class="post-content">{{ .Content }}</div>
+		</article>
+	</section>
 	{{- partial "sidebar" . }}
 </div>
 {{ end }}

@@ -5,6 +5,6 @@
 {{- $url = .RelPermalink }}
 {{- end }}
 <article>
-    <h2><a href="{{ $url }}">{{ .Title }}</a></h2>
-    <p>{{ .Summary }}</p>
+    <h2 class="post-title"><a href="{{ $url }}">{{ .Title }}</a></h2>
+    <div class="post-content">{{ .Summary }}</div>
 </article>

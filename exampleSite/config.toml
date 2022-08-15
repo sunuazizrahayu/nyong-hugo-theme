@@ -1,6 +1,9 @@
-baseURL = 'https://sunuazizrahayu.github.io/nyong-hugo-theme/'
+baseURL = 'http://example.com/'
 languageCode = 'en-us'
 title = 'Nyong Hugo Theme'
 theme = 'nyong'
 
 paginate = 5
+
+[params]
+  description = 'Simple Fast, SEO Friendly Hugo Theme'
