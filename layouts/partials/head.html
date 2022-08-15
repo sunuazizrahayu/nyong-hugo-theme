@@ -15,10 +15,11 @@
     {{- $stylesheet := $stylesheet | resources.Minify }}
     {{- $stylesheetUrl := (.Site.BaseURL | replaceRE "/$" "") }}
     {{- $stylesheetUrl := print $stylesheetUrl ($stylesheet.RelPermalink) }}
-    <link rel="stylesheet" type="text/css" href="{{ $stylesheetUrl }}">
+    <link rel="stylesheet preload" type="text/css" href="{{ $stylesheetUrl }}">
     {{- else }}
-    <link rel="stylesheet" type="text/css" href="{{ $stylesheet.RelPermalink }}">
+    <link rel="stylesheet preload" type="text/css" href="{{ $stylesheet.RelPermalink }}">
     {{- end }}
 
     {{- partial "seo/twitter.html" . }}
+    {{- partial "seo/schema.html" . }}
 </head>
