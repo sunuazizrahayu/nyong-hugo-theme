@@ -109,6 +109,13 @@ pre {
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+.post-content.post-summary p {
+	margin-bottom: 0;
+}
+.post-meta.post-summary {
+	color: #757575;
+	font-size: 14px;
+}
 
 
 /* sidebar */

@@ -7,4 +7,7 @@
 <article>
     <h2 class="post-title post-summary"><a href="{{ $url }}" title="{{ .Title }}">{{ .Title }}</a></h2>
     <div class="post-content post-summary">{{ .Summary }}</div>
+    <div class="post-meta post-summary">
+        <time>{{ .Date.Format (default "2006-01-02 15:04:05" .Site.Params.dateFormat) }}</time>
+    </div>
 </article>

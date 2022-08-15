@@ -7,3 +7,4 @@ paginate = 5
 
 [params]
   description = 'Simple Fast, SEO Friendly Hugo Theme'
+  dateFormat = 'January 2, 2006'
