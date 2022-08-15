@@ -109,3 +109,18 @@ pre {
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+
+
+/* sidebar */
+#main-sidebar ul {
+	margin-left: -20px;
+}
+#widget-recent-post ul {
+	margin-top: 5px;
+}
+#widget-recent-post a {
+	color: blue;
+}
+#widget-recent-post a:hover {
+	text-decoration: underline;
+}

@@ -1,5 +1,5 @@
 <aside id="main-sidebar" class="col-lg-4 col-md-4 col-sm-5">
-	<div>
+	<div id="widget-recent-post">
 		<h3>Latest Post</h3>
 		<ul>
 			{{- range first 5 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
