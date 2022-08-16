@@ -10,7 +10,12 @@ paginate = 5
 enableRobotsTXT = true
 
 [params]
+  subtitle = 'Simple Fast and SEO Friendly Hugo Theme'
   description = 'Simple Fast, SEO Friendly Hugo Theme'
+  keywords = [
+    'Fast and Clean Hugo Theme SEO Friendly',
+    'Simple and Fast Hugo Theme Free'
+  ]
   dateFormat = 'January 2, 2006'
 
 [social]

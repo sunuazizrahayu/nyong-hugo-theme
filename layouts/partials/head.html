@@ -2,7 +2,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{- $title := print .Title " - " .Site.Title }}
-    {{- if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+    {{- $description := "" }}
+    {{- if .IsHome }}
+        {{- if .Site.Params.subtitle }}
+        {{- $description = print " - " .Site.Params.subtitle }}
+    {{- end }}
+    {{- $title = print .Site.Title $description }}
+    {{- end }}
     <title>{{ $title }}</title>
 
 
