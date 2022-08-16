@@ -1,5 +1,5 @@
 baseURL = 'http://example.com/'
-languageCode = 'en-us'
+languageCode = 'en-US'
 title = 'Nyong Hugo Theme'
 theme = 'nyong'
 

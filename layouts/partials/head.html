@@ -20,6 +20,12 @@
     <link rel="stylesheet preload" type="text/css" href="{{ $stylesheet.RelPermalink }}">
     {{- end }}
 
+    {{- if hugo.IsProduction | or (eq site.Params.env "production") | and (ne .Params.robotsNoIndex true) }}
+    <meta name="robots" content="index, follow">
+    {{- else }}
+    <meta name="robots" content="noindex, nofollow">
+    {{- end }}
+
     {{- partial "seo/twitter.html" . }}
     {{- partial "seo/schema.html" . }}
 </head>
