@@ -3,6 +3,11 @@
 	<section id="main-content" class="col-lg-8 col-md-8 col-sm-7">
 		<article>
 			<h1 class="post-title">{{ .Title }}</h1>
+
+			{{- if .Params.cover.show }}
+			{{- partial "post_cover" . }}
+			{{- end }}
+
 			<div class="post-content">{{ .Content }}</div>
 		</article>
 	</section>

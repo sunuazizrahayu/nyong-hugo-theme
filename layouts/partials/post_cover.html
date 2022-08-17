@@ -1,0 +1,11 @@
+{{- if .Params.cover }}
+<figure class="post-cover">
+{{- $alt := (.Params.cover.alt | default .Params.cover.caption | plainify) }}
+{{- $cover := (.Page.Resources.ByType "image").GetMatch (printf "*%s*" (.Params.cover.image)) }}
+{{- if $cover -}}{{/* i.e it is present in page bundle */}}
+	<img loading="lazy" src="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}" alt="{{ $alt }}">
+{{- else }}{{/* For absolute urls and external links, no img processing here */}}
+	<img loading="lazy" src="{{ (.Params.cover.image) | absURL }}" alt="{{ $alt }}">
+{{- end }}
+</figure>
+{{- end }}
