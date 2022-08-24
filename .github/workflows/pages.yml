@@ -21,39 +21,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # build:
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - name: 🛎 Check out master
-  #       uses: actions/checkout@v2
-
-  #     - name: Find and Replace
-  #       uses: jacobtomlinson/gha-find-replace@v2
-  #       with:
-  #         find: "nyong"
-  #         replace: "nyong-hugo-theme"
-  #         include: "exampleSite/config.toml"
-
-  #     - name: Setup Hugo
-  #       uses: peaceiris/actions-hugo@v2
-  #       with:
-  #         hugo-version: 'latest'
-  #     - name: Build
-  #       run: cd exampleSite && hugo --themesDir=../.. --minify --environment=production
-
-  #     - uses: actions/upload-artifact@master
-  #       with:
-  #         name: build-result
-  #         path: public
-
-
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-20.04
     steps:
+      - name: 🛎 Check out master
+        uses: actions/checkout@v2
+
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@v2
         with:
@@ -66,19 +39,31 @@ jobs:
         with:
           hugo-version: 'latest'
       - name: Build
-        run: ls -l
-      - run: cd exampleSite && hugo --themesDir=../.. --minify --environment=production
+        run: cd exampleSite && hugo --themesDir=../.. --minify --environment=production
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: build-result
+          path: exampleSite/public
 
 
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v1
+      - run: ls -la
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: 'exampleSite/public'
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
