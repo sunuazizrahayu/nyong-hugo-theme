@@ -27,15 +27,13 @@ jobs:
       - name: 🛎 Check out master
         uses: actions/checkout@v2
 
-      - name: Change Dir
-        run: cd exampleSite
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
       - name: Build
-        run: hugo --minify --environment=production --source=exampleSite
+        run: cd exampleSite
+      - run: hugo --minify --environment=production --themesDir=../..
 
 
   # Single deploy job since we're just deploying
