@@ -36,7 +36,7 @@ jobs:
       - uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: "http://example.com"
-          replace: "https://sunuazizrahayu.github.io/nyong-hugo-theme"
+          replace: "https://sunuazizrahayu.github.io"
           include: "exampleSite/config.toml"
 
       - name: Setup Hugo
@@ -56,6 +56,7 @@ jobs:
 
   # Single deploy job since we're just deploying
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
