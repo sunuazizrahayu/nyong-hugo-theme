@@ -35,9 +35,9 @@ jobs:
         with:
           hugo-version: 'latest'
       - name: Build
-        run: hugo --minify --environment=production --themesDir=../..
+        run: hugo --minify --environment=production --source=exampleSite
 
-        
+
   # Single deploy job since we're just deploying
   deploy:
     environment:
