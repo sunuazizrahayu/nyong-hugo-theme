@@ -27,12 +27,19 @@ jobs:
       - name: 🛎 Check out master
         uses: actions/checkout@v2
 
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "nyong"
+          replace: "nyong-hugo-theme"
+          include: "exampleSite/config.toml"
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
       - name: Build
-        run: cd exampleSite && hugo --minify --environment=production --themesDir=../..
+        run: cd exampleSite && hugo --themesDir=../.. --minify --environment=production
 
 
   # Single deploy job since we're just deploying
