@@ -1,0 +1,45 @@
+{{- $url := replace .Parent.Permalink ( printf "%s" site.BaseURL) "" }}
+{{- $lang_url := strings.TrimPrefix ( printf "%s/" .Lang) $url }}
+{{- $bc_list := (split $lang_url "/")}}
+{{- $scratch := newScratch }}
+{{- $position := 0 -}}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+        "@type": "ListItem",
+        {{ $position = add ($position) 1 -}}
+        "position": {{$position}},
+        "item": {
+          "@id": "{{ .Site.BaseURL }}",
+          "name": "home"
+        }
+    }
+    {{- range $index, $element := $bc_list }}
+      {{- $scratch.Add "path" (printf "%s/" $element ) | safeJS }}
+      {{- $bc_pg := site.GetPage ($scratch.Get "path") -}}
+      {{- if (and ($bc_pg) (gt (len . ) 0))}}
+      {{- if (ge $index 0)}},{{ end -}}
+      {
+        "@type": "ListItem",
+        {{ $position = add ($position) 1 -}}
+        "position": {{$position}},
+        "name": {{ $bc_pg.Name }},
+        "item": {{ $bc_pg.Permalink | safeHTML }}
+      }
+    {{- end }}
+    {{- end -}}
+    {{- if (ge (len $bc_list) 2) }},{{ end }}
+    {
+      "@type": "ListItem",
+      {{ $position = add ($position) 1 -}}
+      "position": {{$position}},
+      "item": {
+        "@id": "{{ .Permalink }}",
+        "name": "{{ .Title | humanize }}"
+      }
+    }]
+}
+</script>

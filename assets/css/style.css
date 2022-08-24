@@ -13,9 +13,10 @@ article {
 	margin-bottom: 30px;
 }
 a {
-	color: #005b99;
+	color: #0000ee;
 }
 a:hover {
+	color: #551a8b;
 	text-decoration: underline;
 }
 
@@ -55,6 +56,9 @@ pre {
 }
 .post-cover {
 	text-align: center;
+}
+.post-cover img {
+	max-width: 100%;
 }
 .post-content {
 	margin-top: 10px;

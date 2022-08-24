@@ -1,2 +1,8 @@
 {{ partial "seo/schema/website" . }}
 {{ partial "seo/schema/organization" . }}
+{{ if (or .IsPage .IsSection) }}
+{{- partial "seo/schema/breadcrumb" . }}
+{{- end -}}
+{{ if .IsPage }}
+{{- partial "seo/schema/article" . }}
+{{- end }}

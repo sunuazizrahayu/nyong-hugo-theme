@@ -21,9 +21,9 @@
     {{- $stylesheet := $stylesheet | resources.Minify }}
     {{- $stylesheetUrl := (.Site.BaseURL | replaceRE "/$" "") }}
     {{- $stylesheetUrl := print $stylesheetUrl ($stylesheet.RelPermalink) }}
-    <link rel="stylesheet preload" type="text/css" href="{{ $stylesheetUrl }}">
+    <link rel="preload stylesheet" type="text/css" href="{{ $stylesheetUrl }}">
     {{- else }}
-    <link rel="stylesheet preload" type="text/css" href="{{ $stylesheet.RelPermalink }}">
+    <link rel="preload stylesheet" type="text/css" href="{{ $stylesheet.RelPermalink }}">
     {{- end }}
 
     {{- if hugo.IsProduction | or (eq site.Params.env "production") | and (ne .Params.robotsNoIndex true) }}
