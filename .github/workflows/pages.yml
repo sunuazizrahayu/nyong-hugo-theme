@@ -60,7 +60,7 @@ jobs:
         uses: actions/configure-pages@v1
       - uses: actions/download-artifact@master
         with:
-          name: my-artifact
+          name: build-result
           path: public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
