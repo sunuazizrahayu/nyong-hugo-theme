@@ -31,7 +31,7 @@
       }
     {{- end }}
     {{- end -}}
-    {{- if (ge (len $bc_list) 2) }},{{ end }}
+    {{- if (ge (len $bc_list) 0) }},{{ end }}
     {
       "@type": "ListItem",
       {{ $position = add ($position) 1 -}}

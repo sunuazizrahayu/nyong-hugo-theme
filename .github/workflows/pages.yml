@@ -35,8 +35,8 @@ jobs:
           include: "exampleSite/config.toml"
       - uses: jacobtomlinson/gha-find-replace@v2
         with:
-          find: "http://example.com"
-          replace: "https://sunuazizrahayu.github.io/nyong-hugo-theme"
+          find: "http://example.com/"
+          replace: "https://sunuazizrahayu.github.io/nyong-hugo-theme/"
           include: "exampleSite/config.toml"
 
       - name: Setup Hugo
