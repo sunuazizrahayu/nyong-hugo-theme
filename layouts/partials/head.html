@@ -10,6 +10,7 @@
     {{- $title = print .Site.Title $description }}
     {{- end }}
     <title>{{ $title }}</title>
+    <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}">
 
 
     {{- $css_grid := resources.Get "css/reflex.css" }}
