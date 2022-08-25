@@ -16,15 +16,18 @@
     {{- $css_reset := resources.Get "css/reset.css" }}
     {{- $css_style := resources.Get "css/style.css" }}
     {{- $stylesheet := (slice $css_grid $css_reset $css_style) | resources.Concat "assets/css/stylesheet.css" }}
-    {{- $stylesheet := $stylesheet | fingerprint }}
+    {{- /* $stylesheet := $stylesheet | fingerprint */}}
+    {{- $stylesheetUrl := "" }}
     {{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
     {{- $stylesheet := $stylesheet | resources.Minify }}
-    {{- $stylesheetUrl := (.Site.BaseURL | replaceRE "/$" "") }}
-    {{- $stylesheetUrl := print $stylesheetUrl ($stylesheet.RelPermalink) }}
-    <link rel="preload stylesheet" type="text/css" href="{{ $stylesheetUrl }}">
+    {{- $stylesheetUrl = (.Site.BaseURL | replaceRE "/$" "") }}
+    {{- $stylesheetUrl = print $stylesheetUrl ($stylesheet.RelPermalink) }}
+    {{- $fp := ($stylesheet | fingerprint).Data.Integrity }}
+    {{- $stylesheetUrl = print .Site.BaseURL "assets/css/stylesheet.min.css?v=" (md5 $fp)}}
     {{- else }}
-    <link rel="preload stylesheet" type="text/css" href="{{ $stylesheet.RelPermalink }}">
+    {{- $stylesheetUrl = $stylesheet.RelPermalink }}
     {{- end }}
+    <link rel="preload stylesheet" type="text/css" href="{{ $stylesheetUrl }}">
 
     {{- if hugo.IsProduction | or (eq site.Params.env "production") | and (ne .Params.robotsNoIndex true) }}
     <meta name="robots" content="index, follow">
