@@ -1,6 +1,6 @@
 {{- $url := "/" | relURL }}
 {{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
-	{{- $url = "/" | absURL }}
+	{{- $url = .Site.BaseURL }}
 {{- end }}
 <header>
 	<div class="container">
