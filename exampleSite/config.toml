@@ -2,6 +2,7 @@ baseURL = 'http://example.com/'
 languageCode = 'en-US'
 title = 'Nyong Hugo Theme'
 theme = 'nyong'
+copyright = '2022 @sunuazizrahayu'
 
 # Show how many post of page
 paginate = 5

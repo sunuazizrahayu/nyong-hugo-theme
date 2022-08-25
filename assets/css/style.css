@@ -12,6 +12,13 @@ header {
 article {
 	margin-bottom: 30px;
 }
+footer {
+	padding: 10px 1%;
+}
+footer .footer {
+	border: 1px solid rgba(120,120,120,1);
+	font-size: 14px;
+}
 a {
 	color: #0000ee;
 }
