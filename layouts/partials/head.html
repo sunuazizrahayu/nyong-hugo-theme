@@ -1,6 +1,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ hugo.Generator }}
     {{- $title := print .Title " - " .Site.Title }}
     {{- $description := "" }}
     {{- if .IsHome }}
@@ -13,20 +14,21 @@
     <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}">
 
 
-    {{- $css_grid := resources.Get "css/reflex.css" }}
-    {{- $css_reset := resources.Get "css/reset.css" }}
-    {{- $css_style := resources.Get "css/style.css" }}
-    {{- $stylesheet := (slice $css_grid $css_reset $css_style) | resources.Concat "assets/css/stylesheet.css" }}
+    {{- $css := slice }}
+    {{- $css = append (resources.Get "css/reflex.css") $css }}
+    {{- $css = append (resources.Get "css/reset.css") $css }}
+    {{- $css = append (resources.Get "css/style.css") $css }}
+    {{- $stylesheet := $css | resources.Concat "css/stylesheet.css" }}
     {{- /* $stylesheet := $stylesheet | fingerprint */}}
     {{- $md5fp := md5 ($stylesheet | fingerprint).Data.Integrity }}
     {{- $stylesheetUrl := "" }}
     {{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
-    {{- $stylesheet := $stylesheet | resources.Minify }}
-    {{- $stylesheetUrl = (.Site.BaseURL | replaceRE "/$" "") }}
-    {{- $stylesheetUrl = print $stylesheetUrl ($stylesheet.RelPermalink) }}
-    {{- $stylesheetUrl = print .Site.BaseURL "assets/css/stylesheet.min.css?v=" $md5fp }}
+        {{- $stylesheet := $stylesheet | resources.Minify }}
+        {{- $stylesheetUrl = (.Site.BaseURL | replaceRE "/$" "") }}
+        {{- $stylesheetUrl = print $stylesheetUrl ($stylesheet.RelPermalink) }}
+        {{- $stylesheetUrl = print .Site.BaseURL "css/stylesheet.min.css?v=" $md5fp }}
     {{- else }}
-    {{- $stylesheetUrl = print $stylesheet.RelPermalink "?v=" $md5fp }}
+        {{- $stylesheetUrl = print $stylesheet.RelPermalink "?v=" $md5fp }}
     {{- end }}
     <link rel="preload stylesheet" type="text/css" href="{{ $stylesheetUrl }}">
 
@@ -36,8 +38,5 @@
     <meta name="robots" content="noindex, nofollow">
     {{- end }}
 
-    {{- partial "seo/meta.html" . }}
-    {{- partial "seo/opengraph.html" . }}
-    {{- partial "seo/twitter.html" . }}
-    {{- partial "seo/schema.html" . }}
+    {{- partial "seo/seo_index.html" . -}}
 </head>
