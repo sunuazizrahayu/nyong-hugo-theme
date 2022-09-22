@@ -3,7 +3,7 @@
 }
 
 body {
-	word-break: break-word;
+	word-break: break-all;
 	font: 18px/1.5em sans-serif
 }
 header {
